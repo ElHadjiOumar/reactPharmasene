@@ -157,6 +157,7 @@ const Medicament = () => {
               {medicamentInput.error_list.forme}
             </span>
           </div>
+          {/* /s */}
           <div className="form-group mb-3">
             <label>Dosage</label>
             <input
