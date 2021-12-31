@@ -233,7 +233,7 @@ function EditMedicament(props) {
                 className="form-control"
               />
               <img
-                src={`http://localhost:8000/${medicamentInput.image}`}
+                src={`http://senepharma-api.herokuapp.com/${medicamentInput.image}`}
                 width="50px"
                 alt={medicamentInput.medicament_nom}
               />
