@@ -60,6 +60,7 @@ const ViewPharmacie = () => {
           <td>{item.region}</td>
           <td>{item.commune}</td>
           <td>{item.department}</td>
+          <td>{item.map_link}</td>
           <td>{item.status}</td>
           <td>
             <Link
@@ -110,6 +111,7 @@ const ViewPharmacie = () => {
                 <th>region</th>
                 <th>commune</th>
                 <th>department</th>
+                <th>map_link</th>
                 <th>status</th>
                 <th>EDIT</th>
                 <th>DELETE</th>

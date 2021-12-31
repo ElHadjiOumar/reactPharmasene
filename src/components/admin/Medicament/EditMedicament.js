@@ -6,10 +6,10 @@ import swal from "sweetalert";
 function EditMedicament(props) {
   const history = useHistory();
   const [medicamentInput, setMedicament] = useState({
-    nom_commercial: "",
-    dci: "",
-    tableau: "",
+    medicament_nom: "",
     medicament_prix: "",
+    DCI: "",
+    tableau: "",     
     forme: "",
     dosage: "",
     classe_therapeutique: "",
@@ -18,7 +18,7 @@ function EditMedicament(props) {
   });
   const [photo, setPhoto] = useState([]);
 
-  const [medicamentlist, setMedicamentlist] = useState([]);
+  //const [medicamentlist, setMedicamentlist] = useState([]);
   const [errorlist, setError] = useState([]);
   const [loading, setLoading] = useState(true);
   const handleImage = (e) => {
@@ -26,11 +26,6 @@ function EditMedicament(props) {
   };
 
   useEffect(() => {
-    axios.get("/api/all-sous-sous-therapie").then((res) => {
-      if (res.data.status === 200) {
-        setMedicamentlist(res.data.sous_sous_therapie);
-      }
-    });
 
     const medica_id = props.match.params.id;
     axios.get(`/api/edit-medicament/${medica_id}`).then((res) => {
@@ -58,7 +53,7 @@ function EditMedicament(props) {
     //   "sous_sous_therapie_id",
     //   medicamentInput.sous_sous_therapie_id
     // );
-    // formData.append("nom_commercial", medicamentInput.nom_commercial);
+    // formData.append("medicament_nom", medicamentInput.medicament_nom);
     // formData.append(
     //   "medicament_categorie",
     //   medicamentInput.medicament_categorie
@@ -72,10 +67,10 @@ function EditMedicament(props) {
 
     const data = {
       image: photo,
-      nom_commercial: medicamentInput.nom_commercial,
-      dci: medicamentInput.dci,
-      tableau: medicamentInput.tableau,
+      medicament_nom: medicamentInput.medicament_nom,
       medicament_prix: medicamentInput.medicament_prix,
+      DCI: medicamentInput.DCI,
+      tableau: medicamentInput.tableau,
       forme: medicamentInput.forme,
       dosage: medicamentInput.dosage,
       classe_therapeutique: medicamentInput.classe_therapeutique,
@@ -128,26 +123,26 @@ function EditMedicament(props) {
             <label>Nom commercial</label>
             <input
               type="text"
-              name="nom_commercial"
+              name="medicament_nom"
               onChange={handleInput}
-              value={medicamentInput.nom_commercial}
+              value={medicamentInput.medicament_nom}
               className="form-control"
             />
             <span className="text-danger">
-              {medicamentInput.error_list.nom_commercial}
+              {medicamentInput.error_list.medicament_nom}
             </span>
           </div>
           <div className="form-group mb-3">
             <label>DCI</label>
             <input
               type="text"
-              name="dci"
+              name="DCI"
               onChange={handleInput}
-              value={medicamentInput.dci}
+              value={medicamentInput.DCI}
               className="form-control"
             />
             <span className="text-danger">
-              {medicamentInput.error_list.dci}
+              {medicamentInput.error_list.DCI}
             </span>
           </div>
           <div className="form-group mb-3">
@@ -180,7 +175,7 @@ function EditMedicament(props) {
             <label>Forme </label>
             <input
               type="text"
-              name="medicament_prix"
+              name="forme"
               onChange={handleInput}
               value={medicamentInput.forme}
               className="form-control"
@@ -193,7 +188,7 @@ function EditMedicament(props) {
             <label>Dosage</label>
             <input
               type="text"
-              name="medicament_prix"
+              name="dosage"
               onChange={handleInput}
               value={medicamentInput.dosage}
               className="form-control"
@@ -206,7 +201,7 @@ function EditMedicament(props) {
             <label>Classe Thérapeutique</label>
             <input
               type="text"
-              name="medicament_prix"
+              name="classe_therapeutique"
               onChange={handleInput}
               value={medicamentInput.classe_therapeutique}
               className="form-control"
@@ -219,7 +214,7 @@ function EditMedicament(props) {
             <label>Posologie</label>
             <input
               type="text"
-              name="medicament_prix"
+              name="posologie"
               onChange={handleInput}
               value={medicamentInput.posologie}
               className="form-control"
@@ -238,9 +233,9 @@ function EditMedicament(props) {
                 className="form-control"
               />
               <img
-                src={`http://senepharma-api.herokuapp.com//${medicamentInput.image}`}
+                src={`http://localhost:8000/${medicamentInput.image}`}
                 width="50px"
-                alt={medicamentInput.nom_commercial}
+                alt={medicamentInput.medicament_nom}
               />
               <small className="text-danger">{errorlist.image}</small>
             </div>

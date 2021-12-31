@@ -9,17 +9,7 @@ import EditMedicament from "../components/admin/Medicament/EditMedicament";
 import Conseil from "../components/admin/Conseil/Conseil";
 import ViewConseil from "../components/admin/Conseil/ViewConseil";
 import EditConseil from "../components/admin/Conseil/EditConseil";
-import Therapie from "../components/admin/Therapie/Therapie";
-import ViewTherapie from "../components/admin/Therapie/ViewTherapie";
-import EditTherapie from "../components/admin/Therapie/EditTherapie";
 
-import SousTherapie from "../components/admin/Sous-therapie/Therapie";
-import SousViewTherapie from "../components/admin/Sous-therapie/ViewTherapie";
-import SousEditTherapie from "../components/admin/Sous-therapie/EditTherapie";
-
-import SousSousTherapie from "../components/admin/Sous-sous-therapie/Therapie";
-import SousSousViewTherapie from "../components/admin/Sous-sous-therapie/ViewTherapie";
-import SousSousEditTherapie from "../components/admin/Sous-sous-therapie/EditTherapie";
 
 const routes = [
   { path: "/admin", exact: true, name: "Admin" },
@@ -86,62 +76,6 @@ const routes = [
     component: EditConseil,
   },
 
-  {
-    path: "/admin/add-therapie",
-    exact: true,
-    name: "Therapie",
-    component: Therapie,
-  },
-  {
-    path: "/admin/view-therapie",
-    exact: true,
-    name: "ViewTherapie",
-    component: ViewTherapie,
-  },
-  {
-    path: "/admin/edit-therapie/:id",
-    exact: true,
-    name: "EditTherapie",
-    component: EditTherapie,
-  },
-
-  {
-    path: "/admin/add-sous-therapie",
-    exact: true,
-    name: "SousTherapie",
-    component: SousTherapie,
-  },
-  {
-    path: "/admin/view-sous-therapie",
-    exact: true,
-    name: "SousViewTherapie",
-    component: SousViewTherapie,
-  },
-  {
-    path: "/admin/edit-sous-therapie/:id",
-    exact: true,
-    name: "SousEditTherapie",
-    component: SousEditTherapie,
-  },
-
-  {
-    path: "/admin/add-sous-sous-therapie",
-    exact: true,
-    name: "SousTherapie",
-    component: SousSousTherapie,
-  },
-  {
-    path: "/admin/view-sous-sous-therapie",
-    exact: true,
-    name: "SousViewTherapie",
-    component: SousSousViewTherapie,
-  },
-  {
-    path: "/admin/edit-sous-sous-therapie/:id",
-    exact: true,
-    name: "SousEditTherapie",
-    component: SousSousEditTherapie,
-  },
 ];
 
 export default routes;

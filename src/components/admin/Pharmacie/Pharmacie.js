@@ -13,6 +13,7 @@ const Pharmacie = () => {
     region: "",
     commune: "",
     department: "",
+    map_link: "",
     status: "",
     error_list: [],
   });
@@ -34,6 +35,7 @@ const Pharmacie = () => {
       region: pharmacieInput.region,
       commune: pharmacieInput.commune,
       department: pharmacieInput.department,
+      map_link: pharmacieInput.map_link,
       status: pharmacieInput.status,
     };
 
@@ -49,6 +51,7 @@ const Pharmacie = () => {
           region: "",
           commune: "",
           department: "",
+          map_link: "",
           status: "",
           error_list: [],
         });
@@ -181,6 +184,20 @@ const Pharmacie = () => {
             />
             <span className="text-danger">
               {pharmacieInput.error_list.department}
+            </span>
+          </div>
+
+          <div className="form-group mb-3">
+            <label>Lien Map Pharmacie </label>
+            <input
+              type="text"
+              name="map_link"
+              onChange={handleInput}
+              value={pharmacieInput.map_link}
+              className="form-control"
+            />
+            <span className="text-danger">
+              {pharmacieInput.error_list.map_link}
             </span>
           </div>
 

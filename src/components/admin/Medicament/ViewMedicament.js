@@ -55,13 +55,13 @@ const ViewMedicament = () => {
          
           <td>
             <img
-              src={`http://senepharma-api.herokuapp.com//${item.image}`}
+              src={`http://localhost:8000/${item.image}`}
               width="50px"
-              alt={item.nom_commercial}
+              alt={item.medicament_nom}
             />
           </td>
-          <td>{item.nom_commercial}</td>
-          <td>{item.dci}</td>
+          <td>{item.medicament_nom}</td>
+          <td>{item.DCI}</td>
           <td>{item.tableau}</td>
           <td>{item.medicament_prix}</td>
           <td>{item.forme}</td>

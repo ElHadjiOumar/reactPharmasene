@@ -1,35 +1,30 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
 const Medicament = () => {
   const [medicamentInput, setTherapie] = useState({
-      nom_commercial: medicamentInput.nom_commercial,
-      dci: medicamentInput.dci,
-      tableau: medicamentInput.tableau,
-      medicament_prix: medicamentInput.medicament_prix,
-      forme: medicamentInput.forme,
-      dosage: medicamentInput.dosage,
-      classe_therapeutique: medicamentInput.classe_therapeutique,
-      posologie: medicamentInput.posologie,
+    medicament_nom: "",
+    medicament_prix: "",
+    status: "",
+    DCI: "",
+    tableau: "",
+    forme: "",
+    dosage: "",
+    classe_therapeutique: "",
+    posologie: "",
     error_list: [],
   });
   const [photo, setPhoto] = useState([]);
 
-  const [medicamentlist, setMedicamentlist] = useState([]);
+  //const [medicamentlist, setMedicamentlist] = useState([]);
   const [errorlist, setError] = useState([]);
   const handleImage = (e) => {
     setPhoto({ image: e.target.files[0] });
   };
 
-  useEffect(() => {
-    axios.get("/api/all-sous-sous-therapie").then((res) => {
-      if (res.data.status === 200) {
-        setMedicamentlist(res.data.sous_sous_therapie);
-      }
-    });
-  }, []);
+  
 
   const handleInput = (e) => {
     e.persist();
@@ -42,33 +37,14 @@ const Medicament = () => {
     const formData = new FormData();
     formData.append("image", photo.image);
     
-    formData.append("nom_commercial", medicamentInput.nom_commercial);
-    formData.append(
-      "dci",
-      medicamentInput.dci
-    );
-    formData.append(
-      "tableau",
-      medicamentInput.tableau
-    );
-    
+    formData.append("medicament_nom", medicamentInput.medicament_nom);
     formData.append("medicament_prix", medicamentInput.medicament_prix);
-    formData.append(
-      "forme",
-      medicamentInput.forme
-    );
-    formData.append(
-      "dosage",
-      medicamentInput.dosage
-    );
-    formData.append(
-      "classe_therapeutique",
-      medicamentInput.classe_therapeutique
-    );
-     formData.append(
-      "posologie",
-      medicamentInput.posologie
-    );
+    formData.append("DCI",medicamentInput.DCI);
+    formData.append("tableau",medicamentInput.tableau);  
+    formData.append("forme",medicamentInput.forme);
+    formData.append("dosage",medicamentInput.dosage);
+    formData.append("classe_therapeutique",medicamentInput.classe_therapeutique);
+    formData.append("posologie",medicamentInput.posologie);
 
     // const data = {
     //   image: photo.image,
@@ -83,10 +59,10 @@ const Medicament = () => {
       if (res.data.status === 200) {
         swal("Success", res.data.message, "success");
         setTherapie({
-          nom_commercial: "",
-          dci: "",
-          tableau: "",
+          medicament_nom: "",
           medicament_prix: "",
+          DCI: "",
+          tableau: "",     
           forme: "",
           dosage: "",
           classe_therapeutique: "",
@@ -120,26 +96,26 @@ const Medicament = () => {
             <label>Nom commercial</label>
             <input
               type="text"
-              name="nom_commercial"
+              name="medicament_nom"
               onChange={handleInput}
-              value={medicamentInput.nom_commercial}
+              value={medicamentInput.medicament_nom}
               className="form-control"
             />
             <span className="text-danger">
-              {medicamentInput.error_list.nom_commercial}
+              {medicamentInput.error_list.medicament_nom}
             </span>
           </div>
           <div className="form-group mb-3">
             <label>DCI</label>
             <input
               type="text"
-              name="dci"
+              name="DCI"
               onChange={handleInput}
-              value={medicamentInput.dci}
+              value={medicamentInput.DCI}
               className="form-control"
             />
             <span className="text-danger">
-              {medicamentInput.error_list.dci}
+              {medicamentInput.error_list.DCI}
             </span>
           </div>
           <div className="form-group mb-3">
@@ -172,7 +148,7 @@ const Medicament = () => {
             <label>Forme </label>
             <input
               type="text"
-              name="medicament_prix"
+              name="forme"
               onChange={handleInput}
               value={medicamentInput.forme}
               className="form-control"
@@ -185,7 +161,7 @@ const Medicament = () => {
             <label>Dosage</label>
             <input
               type="text"
-              name="medicament_prix"
+              name="dosage"
               onChange={handleInput}
               value={medicamentInput.dosage}
               className="form-control"
@@ -198,7 +174,7 @@ const Medicament = () => {
             <label>Classe Thérapeutique</label>
             <input
               type="text"
-              name="medicament_prix"
+              name="classe_therapeutique"
               onChange={handleInput}
               value={medicamentInput.classe_therapeutique}
               className="form-control"
@@ -211,7 +187,7 @@ const Medicament = () => {
             <label>Posologie</label>
             <input
               type="text"
-              name="medicament_prix"
+              name="posologie"
               onChange={handleInput}
               value={medicamentInput.posologie}
               className="form-control"

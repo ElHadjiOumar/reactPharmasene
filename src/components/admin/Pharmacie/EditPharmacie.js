@@ -39,6 +39,7 @@ function EditPharmacie(props) {
       region: pharmacieInput.region,
       commune: pharmacieInput.commune,
       department: pharmacieInput.department,
+      map_link: pharmacieInput.map_link,
       status: pharmacieInput.status,
     };
     const pharmacie_id = props.match.params.id;
@@ -176,6 +177,17 @@ function EditPharmacie(props) {
               />
               <span className="text-danger">{error.department}</span>
             </div>
+            <div className="form-group mb-3">
+              <label>Link Map Pharmacie</label>
+              <input
+                type="text"
+                name="map_link"
+                onChange={handleInput}
+                value={pharmacieInput.map_link}
+                className="form-control"
+              />
+              <span className="text-danger">{error.map_link}</span>
+            </div>
 
             <div className="form-group mb-3">
               <label>status de la Pharmacie</label>
@@ -207,20 +219,6 @@ function EditPharmacie(props) {
                   Pharmacie de Garde
                 </label>
               </div>
-
-              {/* <input
-                type="radio"
-                name="status"
-                onChange={handleInput}
-                value="0"
-                checked
-              />
-              <input
-                type="radio"
-                name="status"
-                onChange={handleInput}
-                value="1"
-              /> */}
               <span className="text-danger">{error.status}</span>
             </div>
 
