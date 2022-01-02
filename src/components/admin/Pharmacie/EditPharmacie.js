@@ -116,7 +116,7 @@ function EditPharmacie(props) {
             <div className="form-group mb-3">
               <label>longitude de la Pharmacie</label>
               <input
-                type="number"
+                type="text"
                 name="longitude"
                 onChange={handleInput}
                 value={pharmacieInput.longitude}
@@ -127,7 +127,7 @@ function EditPharmacie(props) {
             <div className="form-group mb-3">
               <label>lattitude de la Pharmacie</label>
               <input
-                type="number"
+                type="text"
                 name="lattitude"
                 onChange={handleInput}
                 value={pharmacieInput.lattitude}
