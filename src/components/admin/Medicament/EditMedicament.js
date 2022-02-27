@@ -49,6 +49,7 @@ function EditMedicament(props) {
     e.preventDefault();
 
     const data = {
+      image: photo.image,
       medicament_nom: medicamentInput.medicament_nom,
       medicament_prix: medicamentInput.medicament_prix,
       DCI: medicamentInput.DCI,
@@ -73,7 +74,7 @@ function EditMedicament(props) {
 
     const medicament_id = props.match.params.id;
     console.log(data);
-    //console.log(data.image);
+    console.log(data.image);
     axios.put(`/api/update-medicament/${medicament_id}`, data).then((res) => {
       if (res.data.status === 200) {
         swal("Success", res.data.message, "success");
