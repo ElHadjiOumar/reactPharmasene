@@ -19,11 +19,8 @@ function EditMedicament(props) {
   const [photo, setPhoto] = useState([]);
 
   //const [medicamentlist, setMedicamentlist] = useState([]);
-  const [errorlist, setError] = useState([]);
   const [loading, setLoading] = useState(true);
-  const handleImage = (e) => {
-    setPhoto({ image: e.target.files[0] });
-  };
+  
 
   useEffect(() => {
 
@@ -44,29 +41,14 @@ function EditMedicament(props) {
     setMedicament({ ...medicamentInput, [e.target.name]: e.target.value });
   };
 
+  const handleImage = (e) => {
+    setPhoto({ image: e.target.files[0] });
+  };
+
   const submitMedicament = (e) => {
     e.preventDefault();
 
-    // const formData = new FormData();
-
-    // formData.append(
-    //   "sous_sous_therapie_id",
-    //   medicamentInput.sous_sous_therapie_id
-    // );
-    // formData.append("medicament_nom", medicamentInput.medicament_nom);
-    // formData.append(
-    //   "medicament_categorie",
-    //   medicamentInput.medicament_categorie
-    // );
-    // formData.append(
-    //   "medicament_reference",
-    //   medicamentInput.medicament_reference
-    // );
-    // formData.append("medicament_prix", medicamentInput.medicament_prix);
-    // formData.append("image", photo.image);
-
     const data = {
-      image: photo,
       medicament_nom: medicamentInput.medicament_nom,
       medicament_prix: medicamentInput.medicament_prix,
       DCI: medicamentInput.DCI,
@@ -76,13 +58,27 @@ function EditMedicament(props) {
       classe_therapeutique: medicamentInput.classe_therapeutique,
       posologie: medicamentInput.posologie,
     };
+
+    // const formData = new FormData();
+    // formData.append("image", photo.image);
+    
+    // formData.append("medicament_nom", medicamentInput.medicament_nom);
+    // formData.append("medicament_prix", medicamentInput.medicament_prix);
+    // formData.append("DCI",medicamentInput.DCI);
+    // formData.append("tableau",medicamentInput.tableau);  
+    // formData.append("forme",medicamentInput.forme);
+    // formData.append("dosage",medicamentInput.dosage);
+    // formData.append("classe_therapeutique",medicamentInput.classe_therapeutique);
+    // formData.append("posologie",medicamentInput.posologie);
+
     const medicament_id = props.match.params.id;
+    console.log(data);
+    //console.log(data.image);
     axios.put(`/api/update-medicament/${medicament_id}`, data).then((res) => {
       if (res.data.status === 200) {
         swal("Success", res.data.message, "success");
       } else if (res.data.status === 400) {
         swal("Tous les Champs ne sont pas remplis", "", "error");
-        setError(res.data.errors);
       } else if (res.data.status === 404) {
         swal("Erreur", res.data.message, "error");
         history.push("/admin/view-medicament");
@@ -92,9 +88,11 @@ function EditMedicament(props) {
 
   if (loading) {
     return (
-      <div class="lds-ripple"><div></div><div></div></div>
+      <div className="lds-ripple"><div></div><div></div></div>
+      
     );
   } else {
+    console.log(medicamentInput);
     return (
       <div className="card mt-4">
         <div className="card-header">
@@ -119,9 +117,7 @@ function EditMedicament(props) {
               value={medicamentInput.medicament_nom}
               className="form-control"
             />
-            <span className="text-danger">
-              {medicamentInput.error_list.medicament_nom}
-            </span>
+            
           </div>
           <div className="form-group mb-3">
             <label>DCI</label>
@@ -132,9 +128,7 @@ function EditMedicament(props) {
               value={medicamentInput.DCI}
               className="form-control"
             />
-            <span className="text-danger">
-              {medicamentInput.error_list.DCI}
-            </span>
+            
           </div>
           <div className="form-group mb-3">
             <label>TABLEAU</label>
@@ -145,9 +139,7 @@ function EditMedicament(props) {
               value={medicamentInput.tableau}
               className="form-control"
             />
-            <span className="text-danger">
-              {medicamentInput.error_list.tableau}
-            </span>
+            
           </div>
           <div className="form-group mb-3">
             <label>Prix du Medicament</label>
@@ -158,9 +150,7 @@ function EditMedicament(props) {
               value={medicamentInput.medicament_prix}
               className="form-control"
             />
-            <span className="text-danger">
-              {medicamentInput.error_list.medicament_prix}
-            </span>
+            
           </div>
           <div className="form-group mb-3">
             <label>Forme </label>
@@ -171,9 +161,7 @@ function EditMedicament(props) {
               value={medicamentInput.forme}
               className="form-control"
             />
-            <span className="text-danger">
-              {medicamentInput.error_list.forme}
-            </span>
+            
           </div>
           <div className="form-group mb-3">
             <label>Dosage</label>
@@ -184,9 +172,7 @@ function EditMedicament(props) {
               value={medicamentInput.dosage}
               className="form-control"
             />
-            <span className="text-danger">
-              {medicamentInput.error_list.dosage}
-            </span>
+            
           </div>
           <div className="form-group mb-3">
             <label>Classe Thérapeutique</label>
@@ -197,9 +183,7 @@ function EditMedicament(props) {
               value={medicamentInput.classe_therapeutique}
               className="form-control"
             />
-            <span className="text-danger">
-              {medicamentInput.error_list.classe_therapeutique}
-            </span>
+            
           </div>
           <div className="form-group mb-3">
             <label>Posologie</label>
@@ -210,9 +194,7 @@ function EditMedicament(props) {
               value={medicamentInput.posologie}
               className="form-control"
             />
-            <span className="text-danger">
-              {medicamentInput.error_list.posologie}
-            </span>
+            
           </div>
          
             <div className="form-group mb-3">
@@ -223,12 +205,7 @@ function EditMedicament(props) {
                 onChange={handleImage}
                 className="form-control"
               />
-              <img
-                src={`http://senepharma-api.herokuapp.com/${medicamentInput.image}`}
-                width="50px"
-                alt={medicamentInput.medicament_nom}
-              />
-              <small className="text-danger">{errorlist.image}</small>
+              
             </div>
 
             <button type="submit" className="btn btn-primary px-4 float-end">

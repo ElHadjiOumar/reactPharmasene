@@ -60,7 +60,7 @@ function EditPharmacie(props) {
 
   if (loading) {
     return (
-      <div class="lds-ripple"><div></div><div></div></div>
+      <div className="lds-ripple"><div></div><div></div></div>
     );
   }
 
@@ -183,30 +183,30 @@ function EditPharmacie(props) {
             <div className="form-group mb-3">
               <label>status de la Pharmacie</label>
 
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="status"
                   onChange={handleInput}
                   value="0"
                   id="flexRadioDefault2"
                 />
-                <label class="form-check-label" for="flexRadioDefault2">
+                <label className="form-check-label" for="flexRadioDefault2">
                   Pharmacie Normal
                 </label>
               </div>
 
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="status"
                   onChange={handleInput}
                   value="1"
                   id="flexRadioDefault1"
                 />
-                <label class="form-check-label" for="flexRadioDefault1">
+                <label className="form-check-label" for="flexRadioDefault1">
                   Pharmacie de Garde
                 </label>
               </div>

@@ -55,6 +55,8 @@ const Medicament = () => {
     //   medicament_prix: medicamentInput.medicament_prix,
     // };
 
+    console.log(medicamentInput);
+    console.log(photo);
     axios.post(`/api/store-medicament`, formData).then((res) => {
       if (res.data.status === 200) {
         swal("Success", res.data.message, "success");

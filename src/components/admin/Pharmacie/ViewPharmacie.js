@@ -36,7 +36,7 @@ const ViewPharmacie = () => {
 
   if (loading) {
     return (
-      <div class="lds-ripple"><div></div><div></div></div>
+      <div className="lds-ripple"><div></div><div></div></div>
     );
   } else {
     viewpharmacie_HTMLTABLE = pharmacielist.map((item) => {

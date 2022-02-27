@@ -36,7 +36,7 @@ const ViewMedicament = () => {
 
   if (loading) {
     return (
-      <div class="lds-ripple"><div></div><div></div></div>
+      <div className="lds-ripple"><div></div><div></div></div>
     );
   } else {
     viewmedicament_HTMLTABLE = medicamentlist.map((item) => {
@@ -46,7 +46,7 @@ const ViewMedicament = () => {
          
           <td>
             <img
-              src={`http://senepharma-api.herokuapp.com/${item.image}`}
+              src={`http://localhost:8000/${item.image}`}
               width="50px"
               alt={item.medicament_nom}
             />
@@ -99,9 +99,7 @@ const ViewMedicament = () => {
           <table className="table table-bordered table-striped">
             <thead>
               <tr>
-                <th>ID</th>
-
-                
+                <th>ID</th>             
                 <th>Image</th>
                 <th>NOM MEDICAMENT</th>
                 <th>DCI</th>
