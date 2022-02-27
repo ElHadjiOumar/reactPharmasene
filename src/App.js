@@ -13,8 +13,8 @@ import AdminPrivateRoute from "./AdminPrivateRoute";
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
-// axios.defaults.baseURL = "https://senepharma-api.herokuapp.com/";
-axios.defaults.baseURL = "http://localhost:8000";
+ axios.defaults.baseURL = "https://senepharma-api.herokuapp.com/";
+//axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 axios.defaults.headers.post["Accept"] = "application/json";
 axios.interceptors.request.use(function (config) {
